@@ -16,4 +16,4 @@ Folow the instructions below to get started with Panda Invasion
 
 1. Add Background Sounds and sound effects.
 2. Collecting sugar count.
-3. Add mainmenu functionality
+3. Add Mainmenu functionality
