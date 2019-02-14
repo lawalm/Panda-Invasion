@@ -4,7 +4,7 @@ Panda Invasion is a 2D real-time tower defense game where the player must defeat
 
 ## Getting started
 
-Folow the instaructions below to get started with Panda Invasion
+Folow the instructions below to get started with Panda Invasion
 
 1. Make sure you have all requirements
 2. Download source Code 
