@@ -5,7 +5,10 @@ public class Projectile : MonoBehaviour
 {
     public int damage;
     public Vector3 dir;
-    [SerializeField] float lifeDuration;
+    public GameObject impactEffect;
+    private AudioSource audioSource;
+   
+    [SerializeField] float lifeDuration = 20f;
     [SerializeField] float speed = 1f;
 
     private Rigidbody2D r2b;
@@ -13,6 +16,7 @@ public class Projectile : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        audioSource = GetComponent<AudioSource>();
         r2b = GetComponent<Rigidbody2D>();
         //Normalize the direction
         dir = dir.normalized;
@@ -30,4 +34,18 @@ public class Projectile : MonoBehaviour
     {
         r2b.MovePosition(transform.position += dir * Time.fixedDeltaTime * speed);
     }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            Debug.Log("Hit something");
+            //Instantiate(impactEffect, other.transform.position, Quaternion.identity);
+            GameObject effectIns = Instantiate(impactEffect, other.transform.position, Quaternion.identity);
+            Destroy(effectIns, 2f);
+        }
+        Debug.Log("Hit something");
+        
+    }
+
 }

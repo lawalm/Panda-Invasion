@@ -85,8 +85,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 20
   dir: {x: 0, y: 0, z: 0}
+  impactEffect: {fileID: 120376122881206576, guid: 3124453c6ccfc934e8a03092181e02bd,
+    type: 3}
+  pandaHit: {fileID: 8300000, guid: d608497e65c7ea24e8faf99ca5568b69, type: 3}
   lifeDuration: 5
-  speed: 5
+  speed: 10
 --- !u!1 &1729636950572520466
 GameObject:
   m_ObjectHideFlags: 0

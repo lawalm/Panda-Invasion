@@ -4,9 +4,14 @@ using UnityEngine.UI;
 
 public class SugarMeterScript : MonoBehaviour
 {
-
+    public static SugarMeterScript SugarInstance = null;
     private Text sugarMeter;
     [SerializeField]private int sugarValue = 100;
+
+    private void Awake()
+    {
+        SugarInstance = this;
+    }
 
     // Start is called before the first frame update
     void Start()

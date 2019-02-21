@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 1418134403614236327}
   - component: {fileID: 6533464888759780233}
   - component: {fileID: 3855674060350239184}
-  - component: {fileID: 3912993002944556268}
   m_Layer: 0
   m_Name: Bug
   m_TagString: Enemy
@@ -91,20 +90,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &3912993002944556268
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4659069455883215991}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9173e7e9128c47d4bbac865736ce4828, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  waypoints: []
-  speed: 5
 --- !u!1 &6406136810852700672
 GameObject:
   m_ObjectHideFlags: 0
@@ -181,6 +166,6 @@ SpriteRenderer:
   m_Size: {x: 4.25, y: 3.1875}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0

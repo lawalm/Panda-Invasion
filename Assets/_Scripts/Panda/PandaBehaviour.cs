@@ -1,16 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 /// <summary>
-/// This a test script implementing waypoint implementation 1
+/// Handle the panda's path throught the waypoints and health
 /// </summary>
 [RequireComponent(typeof(Rigidbody2D))]
 public class PandaBehaviour : MonoBehaviour
 {
     [Header("Panda Characteristics")]
     public float speed = 1.0f;
-    public int health = 100;
+    public int startingHealth = 100;
+    public int currentHealth = 100;
+    public Slider healthSlider;
+    public AudioSource hitAudio;
+    public int hitValue = 20;
 
     private Rigidbody2D r2b;
     private Animator anim;
@@ -32,8 +37,10 @@ public class PandaBehaviour : MonoBehaviour
             gm = FindObjectOfType<GameController>();
         }
 
+        currentHealth = startingHealth;
         r2b = GetComponent<Rigidbody2D>();
         anim = GetComponent<Animator>();
+        hitAudio = GetComponent<AudioSource>();
 
         currentWaypoint = gm.firstWaypoint;
 
@@ -63,7 +70,7 @@ public class PandaBehaviour : MonoBehaviour
        if(currentWaypoint == null)
         {
             anim.SetTrigger(AnimEatTriggerHash);
-            Destroy(gameObject);
+            Debug.Log("Reached end of waypoint");
             return;
         }
 
@@ -91,10 +98,13 @@ public class PandaBehaviour : MonoBehaviour
 
     private void GotHit(int damage)
     {
-        health -= damage;
+        currentHealth -= damage;
 
-        if(health <= 0)
+        healthSlider.value = currentHealth;
+
+        if(currentHealth <= 0)
         {
+            currentHealth = 0;
             anim.SetTrigger(AnimDieTriggerHash);
         }
         else
@@ -107,7 +117,9 @@ public class PandaBehaviour : MonoBehaviour
     {
         if(other.gameObject.CompareTag("Projectile"))
         {
+            hitAudio.Play();
             GotHit(other.GetComponent<Projectile>().damage);
+            SugarMeterScript.SugarInstance.ChangeSugar(hitValue);
         }
     }
 }

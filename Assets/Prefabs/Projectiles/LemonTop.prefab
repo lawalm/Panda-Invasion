@@ -164,5 +164,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 20
   dir: {x: 1, y: 1, z: 0}
+  impactEffect: {fileID: 120376122881206576, guid: 3124453c6ccfc934e8a03092181e02bd,
+    type: 3}
+  pandaHit: {fileID: 8300000, guid: d608497e65c7ea24e8faf99ca5568b69, type: 3}
   lifeDuration: 4
   speed: 5

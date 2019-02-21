@@ -111,9 +111,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 20
-  dir: {x: 0, y: 0, z: 0}
-  lifeDuration: 0
-  speed: 1
+  dir: {x: 1, y: 1, z: 0}
+  impactEffect: {fileID: 120376122881206576, guid: 3124453c6ccfc934e8a03092181e02bd,
+    type: 3}
+  pandaHit: {fileID: 8300000, guid: d608497e65c7ea24e8faf99ca5568b69, type: 3}
+  lifeDuration: 5
+  speed: 15
 --- !u!50 &4336626345685110972
 Rigidbody2D:
   serializedVersion: 4

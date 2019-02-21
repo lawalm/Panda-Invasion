@@ -88,13 +88,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 146368184493700195}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cfdd49f9bbab6534b80604c6608d3adc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rangeRadius: 10
-  reloadTime: 2
+  rangeRadius: 8
+  reloadTime: 1.5
   projectilePrefab: {fileID: 7173598296942338583, guid: 2581e04f9b79f084b8db7e4f8514700b,
     type: 3}
   upgradeLevel: 0

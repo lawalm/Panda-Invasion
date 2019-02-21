@@ -6,8 +6,8 @@
 public class CupcakeTower : MonoBehaviour
 {
     [Header("Shooting settings")]
-    public float rangeRadius; //max distance the tower can shoot
-    public float reloadTime; //time before the tower is able to shoot again
+    public float rangeRadius = 10; //max distance the tower can shoot
+    public float reloadTime = 1; //time before the tower is able to shoot again
     public GameObject projectilePrefab;
     private float elapsedTime; // the last shot
 
@@ -94,7 +94,7 @@ public class CupcakeTower : MonoBehaviour
         }
 
         //increase the stats of the tower
-        rangeRadius += 1f;
+        rangeRadius += 2f;
         reloadTime -= 0.5f;
 
         //change graphcs of the tower
