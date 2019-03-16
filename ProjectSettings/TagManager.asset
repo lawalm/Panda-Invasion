@@ -8,6 +8,8 @@ TagManager:
   - Projectile
   - Tower
   - SugarMeter
+  - SugarMoutain
+  - SugarMountain
   layers:
   - Default
   - TransparentFX

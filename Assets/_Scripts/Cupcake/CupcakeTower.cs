@@ -50,7 +50,7 @@ public class CupcakeTower : MonoBehaviour
                         float distance = Vector2.Distance(hitColliders[i].transform.position, transform.position);
                         if (distance < min)
                         {
-                            Debug.Log("Enemy in range");
+                            //Debug.Log("Enemy in range");
                             index = i;
                             min = distance;
                         }
@@ -65,7 +65,7 @@ public class CupcakeTower : MonoBehaviour
 
                 //Create the Projectile
                 GameObject projectile = GameObject.Instantiate(projectilePrefab, transform.position, Quaternion.identity) as GameObject;
-                Debug.Log("Shooting projectiles");
+                //Debug.Log("Shooting projectiles");
                 projectile.GetComponent<Projectile>().dir = direction;
             }
            

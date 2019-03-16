@@ -15,12 +15,13 @@ public class PandaBehaviour : MonoBehaviour
     public int currentHealth = 100;
     public Slider healthSlider;
     public AudioSource hitAudio;
-    public int hitValue = 20;
+    public int hitValue = 20; //sugar increase
 
     private Rigidbody2D r2b;
     private Animator anim;
     private Waypoint currentWaypoint;
-    private static GameController gm;
+    GameController gm;
+    public int cakeEatenPerBiteDamage = 20;
 
     //Hash representations of the Triggers of the Animator controller of the Panda
     private int AnimDieTriggerHash = Animator.StringToHash("DieTrigger");
@@ -32,10 +33,7 @@ public class PandaBehaviour : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if(gm == null)
-        {
-            gm = FindObjectOfType<GameController>();
-        }
+        gm = GameController._instance;
 
         currentHealth = startingHealth;
         r2b = GetComponent<Rigidbody2D>();
@@ -68,9 +66,9 @@ public class PandaBehaviour : MonoBehaviour
     void FixedUpdate()
     {
        if(currentWaypoint == null)
-        {
+        {   
             anim.SetTrigger(AnimEatTriggerHash);
-            Debug.Log("Reached end of waypoint");
+            
             return;
         }
 
@@ -106,6 +104,7 @@ public class PandaBehaviour : MonoBehaviour
         {
             currentHealth = 0;
             anim.SetTrigger(AnimDieTriggerHash);
+            gm.OneMorePandaInHeaven();
         }
         else
         {
@@ -120,6 +119,14 @@ public class PandaBehaviour : MonoBehaviour
             hitAudio.Play();
             GotHit(other.GetComponent<Projectile>().damage);
             SugarMeterScript.SugarInstance.ChangeSugar(hitValue);
+            Destroy(other.gameObject);
+        }
+
+        if(other.gameObject.CompareTag("SugarMountain"))
+        {
+            gm.BiteTheCake(cakeEatenPerBiteDamage);
+            //Debug.Log("Collided with " + other.gameObject);
+          
         }
     }
 }

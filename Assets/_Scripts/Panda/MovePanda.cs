@@ -38,7 +38,7 @@ public class MovePanda : MonoBehaviour
         }
 
         //If the Player won all the waves, call the GameOver function in "winning" mode
-        gm.GameOver(true);
+        gm.IsGameOver(true);
     }
     /// <summary>
     /// Spwns the panda in a single wave and waits until all pandas are in heaven
@@ -54,7 +54,6 @@ public class MovePanda : MonoBehaviour
             float ratio = (i * 1f) / (numberOfPandaPerWave - 1);
             float timeToWait = Mathf.Lerp(3f, 5f, ratio) + Random.Range(0f, 2f);
             yield return new WaitForSeconds(timeToWait);
-        }
-        
+        }    
     }
 }

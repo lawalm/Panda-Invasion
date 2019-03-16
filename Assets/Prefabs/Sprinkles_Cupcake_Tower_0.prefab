@@ -103,8 +103,8 @@ MonoBehaviour:
   - {fileID: 21300002, guid: 29ee980a343074047b327dc98e6dee78, type: 3}
   - {fileID: 21300004, guid: 29ee980a343074047b327dc98e6dee78, type: 3}
   isUpgradable: 1
-  initialCost: 50
-  upgradingCost: 50
+  initialCost: 20
+  upgradingCost: 40
   sellingValue: 20
 --- !u!114 &2646986914552927933
 MonoBehaviour:

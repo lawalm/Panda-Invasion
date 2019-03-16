@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 480956162908486277}
   - component: {fileID: 3334114166396661472}
+  - component: {fileID: 9153121605564986136}
   m_Layer: 0
   m_Name: GameObject
   m_TagString: Untagged
@@ -79,6 +80,19 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &9153121605564986136
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6174490177516426287}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3fa086ab061e034894f13f1559fd5bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationPerMinute: 640
 --- !u!1 &7173598296942338583
 GameObject:
   m_ObjectHideFlags: 0
@@ -164,8 +178,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   damage: 20
   dir: {x: 1, y: 1, z: 0}
-  impactEffect: {fileID: 120376122881206576, guid: 3124453c6ccfc934e8a03092181e02bd,
+  impactEffect: {fileID: 4342741049270236416, guid: 97cf3deb23e51b3438e47da6df1343d1,
     type: 3}
-  pandaHit: {fileID: 8300000, guid: d608497e65c7ea24e8faf99ca5568b69, type: 3}
   lifeDuration: 4
-  speed: 5
+  speed: 20

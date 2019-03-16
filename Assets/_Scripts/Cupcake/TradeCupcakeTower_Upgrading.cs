@@ -15,11 +15,11 @@ public class TradeCupcakeTower_Upgrading : TradeCupcakeTower
     {
         if (currentActiveTower == null)
         {
-            gameObject.SetActive(false);
+            //gameObject.SetActive(false);
         }
         else
         {
-            gameObject.SetActive(true);
+            //gameObject.SetActive(true);
         }
     }
 

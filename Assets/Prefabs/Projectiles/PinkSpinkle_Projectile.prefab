@@ -62,13 +62,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1584df2095246074cb4e84d0d5500b7e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 10
+  damage: 25
   dir: {x: 1, y: 1, z: 0}
   impactEffect: {fileID: 4342741049270236416, guid: 97cf3deb23e51b3438e47da6df1343d1,
     type: 3}
-  pandaHit: {fileID: 0}
-  lifeDuration: 100
-  speed: 15
+  lifeDuration: 10
+  speed: 20
 --- !u!50 &5834509493279078102
 Rigidbody2D:
   serializedVersion: 4

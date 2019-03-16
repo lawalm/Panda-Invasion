@@ -1,29 +1,35 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
+    public static GameController _instance;
     // public Waypoint firstWaypoint;
     public Waypoint firstWaypoint;
     public GameObject losingScreen;
     public GameObject winningScreen;
     public HealthBarScript pHealth;
 
-    //spawning
-    [Header("Wave Settings")]
-    public int numOfWaves;
-    public int numOfPandsPerWave;
-    public Transform spawner;
-    public GameObject pandaPrefab;
+    public int numberOfEnemiesToDefeat;
+    public Text enemyCountTxt;
 
-    private int numOfEnemiesToDefeat; //win conditions
+    void Awake()
+    {
+        if (_instance != null)
+        {
+            Debug.LogError("More than one GameController in scene!");
+            return;
+        }
+        _instance = this;
+    }
+
 
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(WavesSpawner());
-        Debug.Log("Spawning pandas");
+        enemyCountTxt.text = "Enemies: " + numberOfEnemiesToDefeat;
+        pHealth = FindObjectOfType<HealthBarScript>();
     }
 
     //**************************PLACING TOWER REGION***********************
@@ -47,7 +53,7 @@ public class GameController : MonoBehaviour
     //*******************************GAME OVER REGION***********************
     //Private function called when some gameover conditions are met, and displays 
     //the winning or losing screen depending from the value of the parameter passed.
-    public void GameOver(bool playerHasWon)
+    public void IsGameOver(bool playerHasWon)
     {
         //Check if the player has won from the parameter
         if (playerHasWon)
@@ -58,46 +64,53 @@ public class GameController : MonoBehaviour
         else
         {
             //Display the loosing screen
+            
+            DestroyAllTaggedObjects();
             losingScreen.SetActive(true);
+           // Debug.Log("You lose");
         }
 
         //Time.timeScale = 0;
     }
 
-    public void OnMorePandaInHeaven()
-    {
-        numOfEnemiesToDefeat--;
-    }
+    //***********TRACKING REGION***************************
+   
 
-    //*************SPAWNING REGION********************
-    /// <summary>
-    /// Coroutine that spawns the different waves of Pandas
-    /// </summary>
-    /// <returns></returns>
-    private IEnumerator WavesSpawner()
+    public void OneMorePandaInHeaven()
     {
-        for(int i = 0; i < numOfWaves; i++)
+        numberOfEnemiesToDefeat--;
+        UpdateEnemyCount();
+        //Debug.Log(numberOfEnemiesToDefeat);
+       
+        if(numberOfEnemiesToDefeat <= 0)
         {
-            yield return EnemySpawner();
-            numOfPandsPerWave += 3;
+            numberOfEnemiesToDefeat = 0;
+            IsGameOver(true);
         }
     }
 
-    /// <summary>
-    /// Spawns a single wave
-    /// </summary>
-    /// <returns></returns>
-    private IEnumerator EnemySpawner()
+    public void BiteTheCake(int damage)
     {
-        numOfEnemiesToDefeat = numOfPandsPerWave;
-
-        for(int i = 0; i < numOfPandsPerWave; i++)
+        bool isCakeAllEaten = pHealth.ApplyDamage(damage);
+        if (isCakeAllEaten)
         {
-            Instantiate(pandaPrefab, spawner.position, Quaternion.identity);
-            float ratio = (i * 1f) / (numOfPandsPerWave - 1);
-            float timeToWait = Mathf.Lerp(3f, 5f, ratio) + Random.Range(0f, 2f);
-            yield return new WaitForSeconds(timeToWait);
+            IsGameOver(false);
         }
-        yield return new WaitUntil(()=> numOfPandsPerWave < 0);
+
+        OneMorePandaInHeaven();
+    }
+
+    void DestroyAllTaggedObjects()
+    {
+        GameObject[] taggedGO = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach (GameObject taggedObject in taggedGO)
+        {
+            Destroy(taggedObject);
+        }
+    }
+
+    public void UpdateEnemyCount()
+    {
+        enemyCountTxt.text = "Enemies: " + numberOfEnemiesToDefeat;
     }
 }

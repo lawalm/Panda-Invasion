@@ -184,6 +184,8 @@ MonoBehaviour:
   currentHealth: 100
   healthSlider: {fileID: 7347245429864629662}
   hitAudio: {fileID: 4892374855294856011}
+  hitValue: 20
+  cakeEatenPerBiteDamage: 20
 --- !u!82 &4892374855294856011
 AudioSource:
   m_ObjectHideFlags: 0

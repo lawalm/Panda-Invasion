@@ -8,7 +8,7 @@ public class Projectile : MonoBehaviour
     public GameObject impactEffect;
     private AudioSource audioSource;
    
-    [SerializeField] float lifeDuration = 20f;
+    [SerializeField] float lifeDuration = 3f;
     [SerializeField] float speed = 1f;
 
     private Rigidbody2D r2b;
@@ -39,13 +39,9 @@ public class Projectile : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
-            Debug.Log("Hit something");
-            //Instantiate(impactEffect, other.transform.position, Quaternion.identity);
             GameObject effectIns = Instantiate(impactEffect, other.transform.position, Quaternion.identity);
             Destroy(effectIns, 2f);
-        }
-        Debug.Log("Hit something");
-        
+        }     
     }
 
 }
